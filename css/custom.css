@@ -53,7 +53,7 @@ body{
 input[type="text"],
 input[type="text"]:focus,
 input[type="text"]:active {
-  border: none;
+  outline: none;
   border-bottom-width: 2px !important;
   border-bottom-color: #DAD9DA !important;
   border-bottom-style: solid;
