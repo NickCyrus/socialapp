@@ -17,7 +17,7 @@
         CreandoApp Team
     </author>
 
-<!--    <gap:config-file platform="android" parent="/manifest">
+     <gap:config-file platform="android" parent="/manifest">
         <supports-screens
             android:xlargeScreens="true"
             android:largeScreens="true"
@@ -28,7 +28,7 @@
         </application>
     </gap:config-file>
 
-!-->
+ 
 
     <preference name="EnableViewportScale" value="true"/>
     
