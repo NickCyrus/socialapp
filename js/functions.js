@@ -24,11 +24,12 @@ jQuery(function($){
  })
 
 app = {
-    
+        debug : true ,
         loading : '' ,
         pageBefore : '',
         wDivise : 0,
-    
+        baseULR : '',
+        
         main : function(){
             this.setSizeMobil();
             // this.animatePage('login');
@@ -37,6 +38,7 @@ app = {
         setSizeMobil : function(){
                 
                this.wDivise = $(window).width() ;
+               this.baseULR = window.location.href;
             
                 var addCss = '<style type="text/css">'+
                              '.page { overflow: hidden; '+
@@ -73,7 +75,9 @@ app = {
                 
                 page.addClass('animated-page');
                 
-                StatusBar.backgroundColorByHexString("#E18560");
+                if (!this.debug) StatusBar.backgroundColorByHexString("#E18560");
+            
+                window.location.href = this.baseULR+"#"+pageName;
             
                 switch(ANIMATION){
                     
