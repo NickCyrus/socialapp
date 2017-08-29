@@ -21,10 +21,13 @@ jQuery(function($){
 
  $(document).ready(function(){
         app.main(); 
+     
+     
+     
  })
 
 app = {
-        debug : false ,
+        debug : true ,
         loading : '' ,
         pageBefore : '',
         wDivise : 0,
@@ -32,9 +35,22 @@ app = {
         
         main : function(){
             this.setSizeMobil();
-            // this.animatePage('login');
+            this.hastControl();
         },
-    
+        
+        hastControl : function(){
+          
+            if (window.history && window.history.pushState) {
+                $(window).on('popstate', function(e) {
+                    var hashLocation = location.hash;
+                    if (hashLocation) this.pageBefore = hashLocation;
+                     if (this.pageBefore == '#home' && !hashLocation ){
+                         app.animatePage('home','out-right')
+                     }
+                });
+          }
+                
+        },
         setSizeMobil : function(){
                 
                this.wDivise = $(window).width() ;
@@ -80,18 +96,49 @@ app = {
                 
                 if (!this.debug) StatusBar.backgroundColorByHexString("#E18560");
             
-                window.location.href = this.baseULR+"#"+pageName;
+                window.location.href = "#"+pageName;
+            
+                var wDivise = this.wDivise;
             
                 switch(ANIMATION){
                     
+                    case 'out-right':
+                        page.stop().animate({'top':0,
+                                      'left':(this.wDivise)+'px', 
+                                      'position':'absolute'},500,function(){
+                                    
+                                page.css({'left':'', 'right':'-'+(wDivise)+'px' }); 
+                            
+                        });
+            
+                        
+                  
+                    break;
+                    case 'out-left':
+                        page.stop().animate({'top':0,
+                                      'left':'-'+(this.wDivise)+'px', 
+                                      'position':'absolute'},500,function(){
+                                 page.css({'left':'-'+(wDivise)+'px' });      
+                        });
+            
+                       // page.css({'right':'-'+(this.wDivise)+'px'});
+                        
+                    break;
                     case 'in-right':
-                        page.css({'right':'-'+(this.wDivise)+'px'});
+                        page.stop().css({'right':'-'+(this.wDivise)+'px'});
                         page.animate({'top':0,'right':'0px', 
                                        'position':'absolute'},500); 
+                    break;
+                        
+                    case 'in-left':
+                        page.stop().css({'left':'-'+(this.wDivise)+'px'});
+                        page.animate({'top':0,'left':'0px', 
+                                       'position':'absolute'},500); 
                     break; 
+                        
                     default:
                          
-                         page.animate({'top':0,'left':'-'+(this.wDivise + 150)+'px', 
+                         page.stop().animate({'top':0,'left':'-'+(this.wDivise + 150)+'px', 
                                        'position':'absolute'},500);   
                     break;
                         
