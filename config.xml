@@ -55,10 +55,22 @@
     <icon src="res/icons/webos/icon-64.png"          gap:platform="webos" />
     <icon src="res/icons/windows-phone/icon-48.png"  gap:platform="winphone" />
     <icon src="res/icons/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
-
-
+    
+    <platform name="android">
+        <splash src="splash.png" platform="android" qualifier="ldpi" />
+        <splash src="splash.png" platform="android" qualifier="mdpi" />
+        <splash src="splash.png" platform="android" qualifier="hdpi" />
+        <splash src="splash.png" platform="android" qualifier="xhdpi" />
+        <splash src="splash.png" platform="android" qualifier="fr-xhdpi" />
+        <splash src="splash.png" platform="android" qualifier="port-xxhdpi" />
+        <splash src="splash.png" platform="android" qualifier="land-xxhdpi" />
+    </platform>  
+    
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="10000" />
+    
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-    <string>100</string>
+        <string>100</string>
     </gap:config-file>
   
     <feature name="Screenshot">
