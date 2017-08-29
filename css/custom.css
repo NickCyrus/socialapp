@@ -3,38 +3,30 @@ body{
   padding: 0px;
   width: 100%;
   height: 100%;
+  overflow-y: hidden
 }
 
 
-.login{
+.bg-login{
   background: rgba(0, 0, 0, 0) url("../images/login-background.png") no-repeat center 10px fixed;
   -webkit-background-size: cover;
   background-size: cover;
-  width: 100%;
-  height: 100%;
-}
-
-
-form{
-    margin-top: 130%;
-}
  
-/*
+}
+
+
+ 
+ 
 .logo{
-    margin: 30% auto 55% auto;
+    margin: 30% auto 60% auto;
     text-align: center;
 }
-
-
-.form{
-   width: 90%;
-   text-align: center;
-}
-
 
 .logo img{
     width: 155px;
 }
+
+ 
 
 .loginData{ 
   background: #F3F2F3;
@@ -98,4 +90,3 @@ input.ico-pass{
     margin-top: 52px;
 }
  
-*/
