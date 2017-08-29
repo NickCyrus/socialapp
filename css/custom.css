@@ -130,6 +130,19 @@ input.ico-pass{
     background: #F3F2F3;
 }
 
+[data-start="right"]{
+    position: absolute;
+    right: -360px;
+    top: 0px; 
+}
+
+[data-start="left"]{
+    position: absolute;
+    left: -360px;
+    top: 0px; 
+}
+
+
 /****************************** HEADERS **************************/
 
 header nav{
@@ -148,11 +161,12 @@ footer nav{
     height: 50px;
     background: #494949;
     width: 100%;
+    z-index: 100;
 }
 
 
 header nav .btn , footer nav .btn{
-    display: block;
+    display: inline-flex;
     width: 50px;
     height: 50px;
     text-align: center;
@@ -167,12 +181,21 @@ header nav .btn i , footer nav .btn i{
     height: 50px;
     width: 50px;
     background-size: 40%;
+    position: relative;
 }
 
-header nav .btn .ico-lupa , footer nav .btn .ico-lupa { background: url('../images/header-nav-search.png') no-repeat center center ; background-size: 40%; }
-header nav .btn .ico-bar3 , footer nav .btn .ico-bar3 { background: url('../images/header-nav-menu.png') no-repeat center center ; background-size: 40%; }
+header nav .btn .ico-lupa , 
+footer nav .btn .ico-lupa { background: url('../images/header-nav-search.png') no-repeat center center ; background-size: 40%; }
+header nav .btn .ico-bar3 , 
+footer nav .btn .ico-bar3 { background: url('../images/header-nav-menu.png') no-repeat center center ; background-size: 40%; }
 
-header nav .title , footer nav .title{
+footer nav .btn .ico-mail { background: url('../images/bottom-nav-email.png') no-repeat center center ; background-size: 70%; }
+footer nav .btn .ico-rs { background: url('../images/bottom-nav-regularitzacions.png') no-repeat center center ; background-size: 70%; }
+footer nav .btn .ico-top { background: url('../images/bottom-nav-oportunitats.png') no-repeat center center ; background-size: 70%; }
+
+
+
+header nav .title {
     text-align: center;
     height: 50px;
     display: block;
@@ -182,6 +205,15 @@ header nav .title , footer nav .title{
     padding-top: 13px;
 }
 
+footer nav .title{
+    text-align: center;
+    height: 50px;
+    display: block;
+    vertical-align: middle;
+    color:#FFF;
+    font-size: 20px;
+    
+}
 header nav .title.left { text-align: left;}
 header nav .title.right { text-align: right;}
 
@@ -196,4 +228,34 @@ header nav .title img{
     height: 100%;
     display: block;
     overflow: auto;
+}
+
+.numberCount{
+    background: red none repeat scroll 0 0;
+    border-radius: 25px;
+    bottom: 5px;
+    color: #fff;
+    display: inline-flex;
+    padding: 0 5px;
+    position: absolute;
+    right: 3px;
+}
+
+.sidebar{
+    background: rgba(0,0,0,0.5);
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 5000;
+}
+
+.sidebar .sibar-content{
+    background: #e18560 none repeat scroll 0 0;
+    display: block;
+    height: 100%;
+    overflow: auto;
+    position: absolute;
+    right: 0;
+    width: 80%;
 }

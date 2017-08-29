@@ -32,7 +32,9 @@ app = {
         pageBefore : '',
         wDivise : 0,
         baseULR : '',
-        
+        lastEvent : '',
+        navApp : [],
+    
         main : function(){
             this.setSizeMobil();
             this.hastControl();
@@ -42,14 +44,47 @@ app = {
           
             if (window.history && window.history.pushState) {
                 $(window).on('popstate', function(e) {
+                    
+                    
+                    
+                    var hash = app.getLastNav();
+                    
+                    console.log(hash);
+                    
                     var hashLocation = location.hash;
+                    
+                    /*
+                    var beforeHash = this.pageBefore;  
+                    
                     if (hashLocation) this.pageBefore = hashLocation;
-                     if (this.pageBefore == '#home' && !hashLocation ){
+                     
+                   
+                    
+                     
+                    if (this.pageBefore == '#home' && !hashLocation ){
                          app.animatePage('home','out-right')
+                     }else{
+                        
+                         if (hash != 'home'){
+                             app.animatePage(hash,'out-right');
+                         }
+                             
                      }
+                     */
+                    
+                    if (app.lastEvent == 'in' && hash != hashLocation.replace('#','') && hashLocation ) app.animatePage(hash,'out-right');
+                    
                 });
           }
                 
+        },
+        setNavigator : function(value){
+                var indice = (!this.navApp.length) ? 0 : (this.navApp.length);
+                this.navApp[indice] = value;
+        },
+        getLastNav : function(){
+            var indice = (!this.navApp.length) ? 0 : (this.navApp.length - 1); 
+            return this.navApp[indice];
         },
         setSizeMobil : function(){
                 
@@ -62,6 +97,12 @@ app = {
                              '}'+
                              '.content {'+
                                 'height :'+( $(window).height() - ($ ('header nav').height() + $('footer nav').height() )  )+'px'+
+                             '}'+
+                              '[data-start="right"] {'+
+                                'right :-'+( this.wDivise  )+'px'+
+                             '}'+
+                            '[data-start="left"] {'+
+                                'left :-'+( this.wDivise  )+'px'+
                              '}'+
                              '</style>';
             
@@ -88,62 +129,81 @@ app = {
                 
                 ANIMATION = (ANIMATION) ? ANIMATION : 'basic';
                 
-                var page = $('.page[data-page="'+pageName+'"]');
+                var propagation = true;
             
-                if(!page) return false;
+                var page = $('.page[data-page="'+pageName+'"]');
                 
+                var velocity = 500;
+            
+                if(!page.length) {
+                    page = $('section[data-sidebar="'+pageName+'"]');
+                    // pageName = 'sidebar';
+                    velocity = 100;
+                }        
+                 
+                if(!page.length)  return false;
+            
                 page.addClass('animated-page');
                 
                 if (!this.debug) StatusBar.backgroundColorByHexString("#E18560");
             
-                window.location.href = "#"+pageName;
-            
+                
                 var wDivise = this.wDivise;
-            
+                
+                
                 switch(ANIMATION){
                     
                     case 'out-right':
                         page.stop().animate({'top':0,
                                       'left':(this.wDivise)+'px', 
-                                      'position':'absolute'},500,function(){
+                                      'position':'absolute'},velocity,function(){
                                     
                                 page.css({'left':'', 'right':'-'+(wDivise)+'px' }); 
                             
                         });
             
                         
-                  
                     break;
                     case 'out-left':
                         page.stop().animate({'top':0,
                                       'left':'-'+(this.wDivise)+'px', 
-                                      'position':'absolute'},500,function(){
+                                      'position':'absolute'},velocity,function(){
                                  page.css({'left':'-'+(wDivise)+'px' });      
                         });
-            
-                       // page.css({'right':'-'+(this.wDivise)+'px'});
+                         
+                       
                         
-                    break;
+                    break; 
                     case 'in-right':
                         page.stop().css({'right':'-'+(this.wDivise)+'px'});
                         page.animate({'top':0,'right':'0px', 
-                                       'position':'absolute'},500); 
+                                       'position':'absolute'},velocity);
+                        
+                        this.setNavigator(pageName);
+                        this.lastEvent = 'in';
                     break;
                         
                     case 'in-left':
+                        
                         page.stop().css({'left':'-'+(this.wDivise)+'px'});
                         page.animate({'top':0,'left':'0px', 
-                                       'position':'absolute'},500); 
+                                       'position':'absolute'},velocity); 
+                         
+                        this.setNavigator(pageName);
+                        this.lastEvent = 'in';
                     break; 
                         
                     default:
                          
                          page.stop().animate({'top':0,'left':'-'+(this.wDivise + 150)+'px', 
-                                       'position':'absolute'},500);   
+                                       'position':'absolute'},velocity);   
                     break;
                         
                 } 
-            
+                    
+                     
+                        window.location.href = "#"+pageName;
+                   
             
         }
         
