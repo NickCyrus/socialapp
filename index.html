@@ -16,7 +16,7 @@
      </style>
 <body class="bg-login">
     
-        <div class="page" data-page="login">
+        <div class="page active" data-page="login">
             <div class="logo">
                     <img src="images/login-logo.png" /> 
             </div>
@@ -26,12 +26,14 @@
                  <input type="email" name="client_login" id="client_login" placeholder="ID CLIENTE" required class="login-input ico-mail">   
                  <input type="password" name="client_pass" id="client_pass" placeholder="CONTRASEÑA" required class="login-input ico-pass"> 
                               <div class="error_msg" id="error_msg"></div>
-                              <button id="btn-login" class="btnlogin" onclick="app.animatePage('login');">ENTRAR</button>
+                              <button type="button" id="btn-login" class="btnlogin" onclick="app.animatePage('home','in-right');">ENTRAR</button>
                               
                               <div class="remember">He oblidat la contrasenya</div>
                    </form>
             </div>        
         </div>
-            
+        <div class="page" data-page="home">
+            NICK
+        </div>
 </body>
 </html> 

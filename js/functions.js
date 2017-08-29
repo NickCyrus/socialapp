@@ -36,7 +36,7 @@ app = {
     
         setSizeMobil : function(){
                 
-               this.wDivise = $(window).width() + 100;
+               this.wDivise = $(window).width() ;
             
                 var addCss = '<style type="text/css">'+
                              '.page { overflow: hidden; '+
@@ -75,10 +75,15 @@ app = {
             
                 switch(ANIMATION){
                     
+                    case 'in-right':
+                        page.css({'right':'-'+(this.wDivise)+'px'});
+                        page.animate({'top':0,'right':'0px', 
+                                       'position':'absolute'},500); 
+                    break; 
                     default:
                          
-                         page.animate({'top':0,'left':'-'+this.wDivise+'px', 
-                                       'position':'absolute'},1000);   
+                         page.animate({'top':0,'left':'-'+(this.wDivise + 150)+'px', 
+                                       'position':'absolute'},500);   
                     break;
                         
                 } 

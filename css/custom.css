@@ -1,9 +1,17 @@
 body{ 
   margin:0px;
   padding: 0px;
+
 }
 
- 
+.page{
+    display: none;
+    width: 100%;
+} 
+
+.page.active{
+    display: block !important;
+}
 
 *{
  outline: none;   
@@ -27,7 +35,7 @@ body{
 .animated-page{
     position: absolute;
     top:0px;
-    left: 0px;
+    display: block;
 }
 
 .logo{
@@ -113,4 +121,11 @@ input.ico-pass{
     margin-bottom: 72px;
     margin-top: 52px;
 }
- 
+
+
+[data-page="home"]{
+    position: absolute;
+    right: -360px;
+    top: 0px;
+    background: red;
+}
