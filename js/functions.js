@@ -44,6 +44,9 @@ app = {
                              '.page { overflow: hidden; '+
                                 'height :'+$(window).height()+'px'+
                              '}'+
+                             '.content {'+
+                                'height :'+( $(window).height() - ($ ('header nav').height() + $('footer nav').height() )  )+'px'+
+                             '}'+
                              '</style>';
             
             
