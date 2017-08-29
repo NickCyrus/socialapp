@@ -4,8 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta name="author" content="Nick Cyrus Lemus Duque" />
     <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="js/jquery-confirm.min.css" />
+    
     <!-- <script type="text/javascript" src="cordova.js"></script> !-->
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-confirm.min.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
      <style type="text/css">
@@ -23,7 +26,7 @@
                  <input type="email" name="client_login" id="client_login" placeholder="ID CLIENTE" required class="login-input ico-mail">   
                  <input type="password" name="client_pass" id="client_pass" placeholder="CONTRASEÑA" required class="login-input ico-pass"> 
                               <div class="error_msg" id="error_msg"></div>
-                              <button id="btn-login" class="btnlogin" onclick="login()">ENTRAR</button>
+                              <button id="btn-login" class="btnlogin" onclick="app.animatePage('login');">ENTRAR</button>
                               
                               <div class="remember">He oblidat la contrasenya</div>
                    </form>
