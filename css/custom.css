@@ -5,6 +5,16 @@ body{
   overflow-y: hidden
 }
 
+.page{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    z-index: 5000;
+}
+
+*{
+ outline: none;   
+}
 
 .bg-login{
   background: rgba(0, 0, 0, 0) url("../images/login-background.png") no-repeat center 10px fixed;
@@ -14,8 +24,6 @@ body{
 }
 
 
- 
- 
 .logo{
     margin: 30% auto 20% auto;
     text-align: center;
