@@ -18,3 +18,37 @@ jQuery(function($){
     })
 
 })
+
+ $(document).ready(function(){
+        app.main(); 
+ })
+
+app = {
+            
+    
+        main : function(){
+            this.setSizeMobil();
+        },
+    
+        setSizeMobil : function(){
+                
+               
+            
+                var addCss = '<style type="text/css">'+
+                             '.page { overflow: hidden; '+
+                                'height :'+$(window).height()+'px'+
+                             '}'+
+                             '</style>';
+            
+            
+            
+                $('body').append(addCss);
+            
+            
+        }
+    
+    
+}
+
+
+
