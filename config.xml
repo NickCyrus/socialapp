@@ -33,7 +33,7 @@
     <preference name="EnableViewportScale" value="true"/>
     
       
-        <preference name="HideKeyboardFormAccessoryBar" value="true"/>
+        <!-- <preference name="HideKeyboardFormAccessoryBar" value="true"/> !-->
         <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
         <preference name="StatusBarOverlaysWebView" value="true" />
         <preference name="StatusBarBackgroundColor" value="#FFFFFF" />

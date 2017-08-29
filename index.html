@@ -9,20 +9,24 @@
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
      
-<body class="bg-login"> 
-        <div class="logo">
-                <img src="images/login-logo.png" /> 
+<body class="bg-login">
+    
+        <div class="page" data-page="login">
+            <div class="logo">
+                    <img src="images/login-logo.png" /> 
+            </div>
+            <div class="loginData">
+                    <form class="" action="" onsubmit="return false;" align="center">
+
+                 <input type="email" name="client_login" id="client_login" placeholder="ID CLIENTE" required class="login-input ico-mail">   
+                 <input type="password" name="client_pass" id="client_pass" placeholder="CONTRASEÑA" required class="login-input ico-pass"> 
+                              <div class="error_msg" id="error_msg"></div>
+                              <button id="btn-login" class="btnlogin" onclick="login()">ENTRAR</button>
+                              
+                              <div class="remember">He oblidat la contrasenya</div>
+                   </form>
+            </div>        
         </div>
-        <div class="loginData">
-                <form class="" action="" onsubmit="return false;" align="center">
-                            
-             <input type="email" name="client_login" id="client_login" placeholder="ID CLIENTE" required class="login-input ico-mail">   
-             <input type="password" name="client_pass" id="client_pass" placeholder="CONTRASEÑA" required class="login-input ico-pass"> 
-                          <div class="error_msg" id="error_msg"></div>
-                          <button id="btn-login" class="btnlogin" onclick="login()">ENTRAR</button>    
-               </form>
-        </div>        
- 
             
 </body>
 </html> 
