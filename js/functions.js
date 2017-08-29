@@ -72,6 +72,8 @@ app = {
                 if(!page) return false;
                 
                 page.addClass('animated-page');
+                
+                StatusBar.backgroundColorByHexString("#E18560");
             
                 switch(ANIMATION){
                     
