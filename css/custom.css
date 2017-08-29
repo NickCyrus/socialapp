@@ -127,5 +127,63 @@ input.ico-pass{
     position: absolute;
     right: -360px;
     top: 0px;
-    background: red;
+    background: #F3F2F3;
+}
+
+/****************************** HEADERS **************************/
+
+header nav{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    height: 50px;
+    background: #E18560;
+    width: 100%;
+}
+
+header nav .btn{
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+header nav .btn.left{  float: left; }
+header nav .btn.right{  float: right; }
+
+header nav .btn i{
+    display: block;
+    height: 50px;
+    width: 50px;
+    background-size: 40%;
+}
+
+header nav .btn .ico-lupa { background: url('../images/header-nav-search.png') no-repeat center center ; background-size: 40%; }
+header nav .btn .ico-bar3 { background: url('../images/header-nav-menu.png') no-repeat center center ; background-size: 40%; }
+
+header nav .title{
+    text-align: center;
+    height: 50px;
+    display: block;
+    vertical-align: middle;
+    color:#FFF;
+    font-size: 20px;
+    padding-top: 13px;
+}
+
+header nav .title.left{ text-align: left;}
+header nav .title.right{ text-align: right;}
+
+header nav .title img{
+    max-height: 40px;
+    margin-top: -8px;
+}
+
+.content{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: 100%;
+    display: block;
+    overflow: auto;
 }
