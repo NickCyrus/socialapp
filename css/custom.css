@@ -259,3 +259,47 @@ header nav .title img{
     right: 0;
     width: 80%;
 }
+
+/*** MENU **/
+.item-option{
+    margin: 0px;
+    padding: 20px;
+    display: block;
+}
+
+.item-option li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.item-option li a{
+    background: #FFF;
+    color: #000;
+    border-radius: 7px;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+     
+    -webkit-box-shadow: 2px 2px 3px -1px rgba(225,224,225,1);
+    -moz-box-shadow: 2px 2px 3px -1px rgba(225,224,225,1);
+    box-shadow: 2px 2px 3px -1px rgba(225,224,225,1);
+    
+}
+
+.item-option li a {
+    cursor: pointer;
+}
+
+.item-option li a .icon{
+    display: block;
+    float: left;
+    height: 50px;
+    margin-right: 10px;
+    margin-top: -16px;
+    width: 50px;
+}
+
+.icon-folder{
+   background: url('../images/home-fitxa-client.png') no-repeat center center ; background-size: 60%; } 
+}
+
