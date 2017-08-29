@@ -18,7 +18,7 @@ body{
  
  
 .logo{
-    margin: 30% auto 60% auto;
+    margin: 30% auto 20% auto;
     text-align: center;
 }
 
@@ -30,10 +30,11 @@ body{
 
 .loginData{ 
   background: #F3F2F3;
-  width: 95%;
+  width: 90%;
   padding: 40px 10px 10px 10px;
   border-radius: 10px;
   margin: auto;
+  display: block;
 }
 
 .loginData input{
@@ -42,6 +43,9 @@ body{
 
 .login-input{
   margin-bottom: 20px;
+  border:none;
+  padding: 10px;
+  width: 100%;
 }
 
 .login-input,
@@ -52,17 +56,18 @@ input[type="text"]:focus,
 input[type="text"]:active {
   border-bottom-width: 2px !important;
   border-bottom-color: #DAD9DA !important;
+  border-bottom-style: solid;
 }
 
 input.ico-mail{
-    background: rgba(0, 0, 0, 0) url("../image/login-email.png") no-repeat scroll 10px center;
-    background-size: 11%;
+    background: rgba(0, 0, 0, 0) url("../images/login-email.png") no-repeat scroll 10px center;
+    background-size: 8%;
     padding-left: 50px;
 }
 
 input.ico-pass{
-    background: rgba(0, 0, 0, 0) url("../image/home-contrasenyes.png") no-repeat scroll 13px center;
-    background-size: 9%;
+    background: rgba(0, 0, 0, 0) url("../images/home-contrasenyes.png") no-repeat scroll 13px center;
+    background-size: 6%;
     padding-left: 50px;
 }
 
@@ -73,9 +78,13 @@ input.ico-pass{
 .cblanco{ color : #FFF; }
 
 #btn-login{
+   background: #E18560;    
   border-radius: 10px;
   margin: auto;
   color : #FFF;
+  width: 100%;
+  border:none;
+  padding: 10px;
 }
 
 .remember{

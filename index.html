@@ -13,18 +13,16 @@
         <div class="logo">
                 <img src="images/login-logo.png" /> 
         </div>
-        <div class="login">
-              
-                        <form action="" onsubmit="return false;" align="center">
+        <div class="loginData">
+                <form class="" action="" onsubmit="return false;" align="center">
                             
-                          <input type="email" name="client_login" id="client_login" placeholder="ID CLIENTE" required class="input-rounded">   
-                          <input type="password" name="client_pass" id="client_pass" placeholder="CONTRASEÑA" required class="input-rounded"> 
+                          <input type="email" name="client_login" id="client_login" placeholder="ID CLIENTE" required class="login-input ico-mail">   
+                          <input type="password" name="client_pass" id="client_pass" placeholder="CONTRASEÑA" required class="login-input ico-pass"> 
                           <div class="error_msg" id="error_msg"></div>
-                          <button id="btnlogin" class="btnlogin" onclick="login()">ENTRAR</button>    
-                        </form>
-                    
-                  
-        </div>     
+                          <button id="btn-login" class="btnlogin" onclick="login()">ENTRAR</button>    
+               </form>
+        </div>        
+ 
             
 </body>
 </html> 
