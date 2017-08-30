@@ -1,16 +1,42 @@
+var LoginData = {}
+var bigData = {}
 jQuery(function($){
 
-    $('#login').submit(function(e){
+    $('#loginAccess').submit(function(e){
         
-          var email = $('#email-token').val();
-          var pass  = $('#pass-token').val();
+          var email = $('#email_token').val();
+          var pass  = $('#pass_token').val();
 
-          if (!email){ $('#email-token').focus(); return false; }
-          if (!pass){ $('#pass-token').focus(); return false; }
+          if (!email){ $('#email_token').focus(); return false; }
+          if (!pass){ $('#pass_token').focus(); return false; }
 
           if (email && pass){
-              $('#email-token , #pass-token').val('');
-              phonon.navigator().changePage('pagetwo', '');
+              
+              app.ajax({
+                         beforeSend : function(){
+                                app.dialogWait('Estamos comprobando el acceso');
+                         },
+                         datos : { opc : 'login', user: email , pass : pass },
+                         success: function( rs){
+                                app.dialogClose();
+                                if (rs.error){
+                                    $('#email_token').focus();
+                                    app.alertConfirm('Acceso denegado', "Nom d'usuari incorrecte");
+                                }
+                             
+                                if (rs.LoginData){
+                                    LoginData = rs.LoginData;
+                                    $('#email_token , #pass_token').val('');
+                                    app.setAvatar(LoginData);
+                                    app.animatePage('home','in-right');
+                                }
+                                
+                                console.log(LoginData);
+                         }
+                      })
+              
+              // $('#email_token , #pass_token').val('');
+              
               // alert("email:"+email+" pass:"+pass);
           }
 
@@ -26,6 +52,8 @@ jQuery(function($){
         var init = new Switchery(elem , { size: 'small' });
      
  })
+
+
 
 app = {
         debug : false ,
@@ -129,7 +157,14 @@ app = {
                 });
             
         },
-            
+    
+        dialogClose : function(ID){
+            if (!ID)
+                this.loading.close();   
+            else
+                ID.close();   
+        },
+    
         animatePage : function (pageName , ANIMATION ){
                 
                 ANIMATION = (ANIMATION) ? ANIMATION : 'basic';
@@ -210,6 +245,49 @@ app = {
                         window.location.href = "#"+pageName;
                    
             
+        },
+    
+        alertConfirm: function(title, msg ){
+                    
+                    title = (title) ? title : 'Informació';
+                    
+                    $.alert({
+                          title: title, 
+                          content: msg,
+                          theme: 'light',
+                          containerFluid : true
+                    });
+
+		}, 
+         
+        ajax : function (opciones){
+             
+                
+              errorMSGTITLE =  (opciones.errorMSGTITLE) ?  opciones.errorMSG : 'Error';
+              errorMSG      =  (opciones.errorMSGTITLE) ?  opciones.errorMSG : 'Se ha producido un error en la carga de la información. El servidor respondio:';
+            
+              $.ajax({ 
+						 beforeSend :  opciones.beforeSend,
+                		 type   : "POST",
+                         crossDomain: true,
+                         dataType : 'json',      
+						 url    : 'https://socialpartners.org/app/app.php',
+						 data   : opciones.datos,
+						 success: opciones.success,
+                         complete: opciones.complete,
+                         error: function (jqXHR, exception) {
+                            app.alertConfirm( errorMSGTITLE , errorMSG + ' <b>'+jqXHR.statusText+'</b>');
+                         },
+						 cache: false
+				})
+            
+        },
+    
+        setAvatar : function(data){
+            
+                if (data.avatar) $('.avatar img').attr('src', data.avatar);
+                if (data.Name) $('.nice-name').html(data.Name);
+                 
         }
         
     

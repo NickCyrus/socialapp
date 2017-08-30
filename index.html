@@ -23,12 +23,13 @@
                     <img src="images/login-logo.png" /> 
             </div>
             <div class="loginData">
-                    <form class="" action="" onsubmit="return false;" align="center">
+            
+            <form class="" id="loginAccess" action="" onsubmit="return false;" align="center">
 
-                 <input type="email" name="client_login" id="client_login" placeholder="ID CLIENTE" required class="login-input ico-mail">   
-                 <input type="password" name="client_pass" id="client_pass" placeholder="CONTRASEÑA" required class="login-input ico-pass"> 
+                 <input type="text" name="email_token" id="email_token" placeholder="Email" required class="login-input ico-mail">   
+                 <input type="password" name="pass_token" id="pass_token" placeholder="Contrasenya" required class="login-input ico-pass"> 
                               <div class="error_msg" id="error_msg"></div>
-                              <button type="button" id="btn-login" class="btnlogin" onclick="app.animatePage('home','in-right');">ENTRAR</button>
+                              <button type="submit" id="btn-login" class="btnlogin">ENTRAR</button>
                               
                               <div class="remember">He oblidat la contrasenya</div>
                    </form>
@@ -56,10 +57,10 @@
                              <a class="close" onclick="app.animatePage('profile','out-right');"></a>
                              
                              <div class="avatar">
-                                    <img src="https://upload.wikimedia.org/wikipedia/en/7/70/Shawn_Tok_Profile.jpg" />
+                                    <img src="images/avatar.jpg" />
                              </div>
                              <div class="nice-name">
-                                    Nick Cyrus Lemus Duque
+                                     
                              </div>
                             
                              <div class="bottom-area">
