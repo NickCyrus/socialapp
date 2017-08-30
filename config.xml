@@ -31,8 +31,9 @@
  
 
     <preference name="EnableViewportScale" value="true"/>
+    <preference name="Orientation" value="landscape" />
+    <preference name="ShowTitle" value="false"/>  
     
-      
         <preference name="HideKeyboardFormAccessoryBar" value="true"/>
         <!-- <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" /> !-->
         <preference name="StatusBarOverlaysWebView" value="true" />
