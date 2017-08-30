@@ -260,6 +260,29 @@ header nav .title img{
     width: 80%;
 }
 
+.sidebar .sibar-content .close{
+    display: block;
+    height: 29px;
+    margin-left: 20px;
+    margin-top: 30px;
+    width: 27px;
+    background: url('../images/menu-close.png') no-repeat;
+    background-size:100%;
+    cursor: pointer;
+}
+
+.avatar{
+    text-align: center;
+    display: block;
+    
+}
+
+.avatar img{
+    border-radius: 50%;
+    margin: 60px 0 10px 0;
+    width: 130px;
+}
+
 /*** MENU **/
 .item-option{
     margin: 0px;
@@ -299,7 +322,68 @@ header nav .title img{
     width: 50px;
 }
 
-.icon-folder{
-   background: url('../images/home-fitxa-client.png') no-repeat center center ; background-size: 60%; } 
+.icon-folder{ background: url('../images/home-fitxa-client.png') no-repeat center center ; background-size: 60%; }
+.icon-mail{ background: url('../images/home-email.png') no-repeat center center ; background-size: 60%; }
+.icon-cataleg{ background: url('../images/home-cataleg.png') no-repeat center center ; background-size: 60%; }
+.icon-productes{ background: url('../images/home-producte.png') no-repeat center center ; background-size: 60%; }
+.icon-top{ background: url('../images/home-oportunitats.png') no-repeat center center ; background-size: 60%; }
+.icon-pass{ background: url('../images/home-contrasenyes.png') no-repeat center center ; background-size: 48%; } 
+.icon-accident{ background: url('../images/home-accidents.png') no-repeat center center ; background-size: 60%; }
+.icon-rg{ background: url('../images/home-regularitzacions.png') no-repeat center center ; background-size: 60%; }
+
+.nice-name{
+    text-align: center;
+    font-size: 20px;
+    color:#FFF;
 }
 
+.bottom-area{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    background: #FFF;
+    min-height: 200px;
+}
+
+.bottom-area ul {  margin: 20px 0px; padding: 0px; }
+
+.bottom-area ul li{  
+        background: #F3F2F3;
+        list-style: none;
+        
+}
+
+.bottom-area ul li a{
+    padding: 7px;
+    border-bottom: 1px solid #E4E2E4;
+    display: block;
+    cursor: pointer;
+}
+
+.icon-config{
+    background: url('../images/menu-config.png') no-repeat 9px 8px ; 
+    background-size: 8%;
+    padding-left: 40px !important;
+}
+
+.icon-equip{
+    background: url('../images/menu-equip.png') no-repeat 9px 8px ; 
+    background-size: 7%;
+    padding-left: 40px  !important;
+}
+
+.icon-notification{
+    background: url('../images/menu-alert.png') no-repeat 10px 5px; 
+    background-size: 6%;
+    padding-left: 40px  !important;;
+}
+ 
+
+.separador{
+    display: block;
+    height: 15px;
+}
+
+.bottom-area ul li:last-child{
+    border-bottom: none;
+}

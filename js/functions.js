@@ -22,7 +22,8 @@ jQuery(function($){
  $(document).ready(function(){
         app.main(); 
      
-     
+        var elem = document.querySelector('.js-switch');
+        var init = new Switchery(elem , { size: 'small' });
      
  })
 
@@ -88,6 +89,10 @@ app = {
         },
         setSizeMobil : function(){
                 
+               
+                
+
+            
                this.wDivise = $(window).width() ;
                this.baseULR = window.location.href;
             
