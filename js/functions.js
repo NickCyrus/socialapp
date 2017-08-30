@@ -1,5 +1,14 @@
 var LoginData = {}
 var bigData = {}
+
+document.addEventListener("deviceready",onDeviceReady,false);
+
+function onDeviceReady() {
+        navigator.splashscreen.hide();
+}
+
+
+
 jQuery(function($){
 
     $('#loginAccess').submit(function(e){

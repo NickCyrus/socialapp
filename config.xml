@@ -5,9 +5,9 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         xmlns:android = "http://schemas.android.com/apk/res/android"
         id        = "com.socialpartnetorg.roc"
-        version   = "1.0.2">
+        version   = "1.1.2">
 
-    <name>SP 1.1</name>
+    <name>SP 1.2</name>
  
     <description>
         Social Partneres
@@ -17,16 +17,16 @@
         CreandoApp Team
     </author>
 
-     <!-- <gap:config-file platform="android" parent="/manifest">
+    <gap:config-file platform="android" parent="/manifest">
         <supports-screens
             android:xlargeScreens="true"
             android:largeScreens="true"
             android:smallScreens="true" />
-        <application android:theme="@android:style/Theme.NoTitleBar" >
-            <activity android:theme="@android:style/Theme.NoActionBar.Fullscreen"></activity>
-                <activity android:theme="@android:style/Theme.NoTitleBar.Fullscreen" ></activity> 
-        </application> 
-    </gap:config-file> !-->
+      <application android:theme="@android:style/Theme.NoTitleBar" >
+            <activity android:theme="@android:style/Theme.NoTitleBar" >
+            </activity>
+        </application>
+    </gap:config-file>
 
  
 
