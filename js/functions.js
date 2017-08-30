@@ -28,7 +28,7 @@ jQuery(function($){
  })
 
 app = {
-        debug : true ,
+        debug : false ,
         loading : '' ,
         pageBefore : '',
         wDivise : 0,
