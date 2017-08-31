@@ -56,16 +56,7 @@
     <icon src="res/icons/webos/icon-64.png"          gap:platform="webos" />
     <icon src="res/icons/windows-phone/icon-48.png"  gap:platform="winphone" />
     <icon src="res/icons/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
-    
-     <!--
-        <splash src="splash.png" platform="android" qualifier="ldpi" />
-        <splash src="splash.png" platform="android" qualifier="mdpi" />
-        <splash src="splash.png" platform="android" qualifier="hdpi" />
-        <splash src="splash.png" platform="android" qualifier="xhdpi" />
-        <splash src="splash.png" platform="android" qualifier="fr-xhdpi" />
-        <splash src="splash.png" platform="android" qualifier="port-xxhdpi" />
-        <splash src="splash.png" platform="android" qualifier="land-xxhdpi" />
-     !-->
+       
     <splash src="splash.png" width="320" height="480"/>
     <splash src="splash.png" width="640" height="960"/>
     <splash src="splash.png" width="768" height="1024"/>
@@ -76,14 +67,13 @@
     <splash src="splash.png" width="750" height="1334"/>
     <splash src="splash.png" width="1242" height="2208"/>
     
-   <!--
-    <preference name="SplashScreenBackgroundColor" value="white" />
-    <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="SplashScreenDelay" value="400" />
+    
+    <preference name="SplashScreenBackgroundColor" value="#E18560" />
+    <preference name="AutoHideSplashScreen" value="false" />
     <preference name="ShowSplashScreenSpinner" value="false"/>
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="SplashShowOnlyFirstTime" value="true" />
-    !-->
+     
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
         <string>100</string>
     </gap:config-file>
@@ -93,11 +83,9 @@
     </feature>
 
     <access origin="*"/>
-    <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
-    <!-- Whitelist configuration. Refer to https://cordova.apache.org/docs/en/edge/guide_appdev_whitelist_index.md.html -->
-
+    
      
-    <!-- <plugin name="cordova-plugin-splashscreen" /> !-->
+    <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-statusbar" />
     <plugin name="cordova-plugin-camera" />
     <plugin name="cordova-plugin-media-capture" />
