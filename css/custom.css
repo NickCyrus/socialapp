@@ -1,7 +1,7 @@
 body{ 
   margin:0px;
   padding: 0px;
-
+  font-family: Arial;
 }
 
 .page{
@@ -23,6 +23,10 @@ body{
 
 .ajax-loading-medium img{
     width: 62px; 
+}
+
+.currentPageActive{
+    z-index: 99999999;
 }
 
 .bg-login{
@@ -118,10 +122,13 @@ input.ico-pass{
 }
 
 .header-bar ~ .content {
-    margin-bottom: 72px;
-    margin-top: 52px;
+    margin-bottom: 70px;
+    margin-top: 50px;
 }
 
+.content-header{
+    margin-top: 50px; 
+}
 
 [data-page="home"]{
     position: absolute;
@@ -140,6 +147,13 @@ input.ico-pass{
     position: absolute;
     left: -360px;
     top: 0px; 
+}
+
+
+[data-start="bottom"]{
+    position: absolute;
+    left: 0px;
+    top: 640px; 
 }
 
 
@@ -173,6 +187,13 @@ header nav .btn , footer nav .btn{
     cursor: pointer;
 }
 
+ul , li {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+
 header nav .btn.left , footer nav .btn.left {  float: left; }
 header nav .btn.right , footer nav .btn.right {  float: right; }
 
@@ -188,7 +209,7 @@ header nav .btn .ico-lupa ,
 footer nav .btn .ico-lupa { background: url('../images/header-nav-search.png') no-repeat center center ; background-size: 40%; }
 header nav .btn .ico-bar3 , 
 footer nav .btn .ico-bar3 { background: url('../images/header-nav-menu.png') no-repeat center center ; background-size: 40%; }
-
+header nav .btn .ico-arrow-back { background: url('../images/header-nav-turn-back.png') no-repeat center center ; background-size: 40%; }
 footer nav .btn .ico-mail { background: url('../images/bottom-nav-email.png') no-repeat center center ; background-size: 70%; }
 footer nav .btn .ico-rs { background: url('../images/bottom-nav-regularitzacions.png') no-repeat center center ; background-size: 70%; }
 footer nav .btn .ico-top { background: url('../images/bottom-nav-oportunitats.png') no-repeat center center ; background-size: 70%; }
@@ -202,7 +223,8 @@ header nav .title {
     vertical-align: middle;
     color:#FFF;
     font-size: 20px;
-    padding-top: 13px;
+    padding-top: 10px;
+    text-transform: uppercase;
 }
 
 footer nav .title{
@@ -214,8 +236,9 @@ footer nav .title{
     font-size: 20px;
     
 }
-header nav .title.left { text-align: left;}
-header nav .title.right { text-align: right;}
+
+header nav .title.left { text-align: left; padding-left: 20px;}
+header nav .title.right { text-align: right; padding-right: 20px;}
 
 header nav .title img{
     max-height: 40px;
@@ -239,6 +262,7 @@ header nav .title img{
     padding: 0 5px;
     position: absolute;
     right: 3px;
+    font-size: 12px;
 }
 
 .sidebar{
@@ -271,6 +295,7 @@ header nav .title img{
     cursor: pointer;
 }
 
+.bgbase{ background: #F3F2F3;}
 .avatar{
     text-align: center;
     display: block;
@@ -386,4 +411,28 @@ header nav .title img{
 
 .bottom-area ul li:last-child{
     border-bottom: none;
+}
+
+ul.box{
+    padding: 20px;
+}
+
+a{
+    cursor: pointer;
+}
+
+/********************* TEAM */
+
+.category-team{
+    background: #9b9b9b none repeat scroll 0 0;
+    border-radius: 9px;
+    color: #fff;
+    float: right;
+    margin-top: -5px;
+    padding: 5px 15px;
+    width: 63%;
+}
+
+#equip-list li{
+    margin-bottom: 20px;
 }

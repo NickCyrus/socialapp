@@ -11,6 +11,7 @@
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/jquery-confirm.min.js"></script>
     <script type="text/javascript" src="js/switchery.min.js"></script>
+    <script type="text/javascript" src="js/js.cookie.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
      <style type="text/css">
@@ -36,7 +37,7 @@
             </div>        
         </div>
     
-        
+        <!-- PAGE HOME !-->
         <div class="page" data-page="home" data-start="right">
                 <header>
                     <nav>
@@ -50,11 +51,11 @@
                                 <img src="images/header-nav-logo.png" />
                         </div>
                     </nav>
-                </header>
+                </header> 
                 <section class="sidebar" data-sidebar="profile" data-start="right">
                         <div class="sibar-content">
                             
-                             <a class="close" onclick="app.animatePage('profile','out-right');"></a>
+                             <a class="close" onclick="app.backNavigator();"></a>
                              
                              <div class="avatar">
                                     <img src="images/avatar.jpg" />
@@ -66,7 +67,7 @@
                              <div class="bottom-area">
                                     <ul>
                                         <li><a class="icon-config">Configuració</a></li>
-                                        <li><a class="icon-equip">Equip</a></li>
+                                        <li><a class="icon-equip" onclick="app.animatePage('equip','bottom-top');">Equip</a></li>
                                         <div class="separador"></div>
                                         <li>
                                             <a class="icon-notification">Notifications
@@ -140,5 +141,30 @@
                     </nav>
                 </footer>
         </div>
+        <!-- END HOME !-->
+    
+        <!-- PAGE EQUIP !-->
+    
+        <div class="page bgbase" data-page="equip" data-start="bottom" data-speed="200">
+             <header>
+                    <nav>
+                        <a class="btn right" onclick="app.backNavigator();">
+                            <i class="ico-arrow-back"></i>
+                        </a>
+                         
+                        <div class="title left">
+                                equip
+                        </div>
+                    </nav>
+              </header>
+              <div class="content-header">
+                    
+                    <ul class="box" id="equip-list"> 
+                             
+                    </ul>    
+                
+              </div>
+        </div>
+        <!-- END EQUIP !-->
 </body>
 </html> 

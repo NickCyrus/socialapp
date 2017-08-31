@@ -12,7 +12,8 @@ function onDeviceReady() {
 jQuery(function($){
 
     $('#loginAccess').submit(function(e){
-        
+            
+           
           var email = $('#email_token').val();
           var pass  = $('#pass_token').val();
 
@@ -20,33 +21,7 @@ jQuery(function($){
           if (!pass){ $('#pass_token').focus(); return false; }
 
           if (email && pass){
-              
-              app.ajax({
-                         beforeSend : function(){
-                                app.dialogWait('Estamos comprobando el acceso');
-                         },
-                         datos : { opc : 'login', user: email , pass : pass },
-                         success: function( rs){
-                                app.dialogClose();
-                                if (rs.error){
-                                    $('#email_token').focus();
-                                    app.alertConfirm('Acceso denegado', "Nom d'usuari incorrecte");
-                                }
-                             
-                                if (rs.LoginData){
-                                    LoginData = rs.LoginData;
-                                    $('#email_token , #pass_token').val('');
-                                    app.setAvatar(LoginData);
-                                    app.animatePage('home','in-right');
-                                }
-                                
-                                console.log(LoginData);
-                         }
-                      })
-              
-              // $('#email_token , #pass_token').val('');
-              
-              // alert("email:"+email+" pass:"+pass);
+              app.login( email , pass)
           }
 
           e.preventDefault();
@@ -68,7 +43,8 @@ app = {
         debug : false ,
         loading : '' ,
         pageBefore : '',
-        wDivise : 0,
+        wDivice : 0,
+        hDivice : 0,
         baseULR : '',
         lastEvent : '',
         navApp : [],
@@ -76,41 +52,68 @@ app = {
         main : function(){
             this.setSizeMobil();
             this.hastControl();
+            this.oauth();
         },
         
+        login : function( email , pass){
+            
+            this.ajax({
+                         beforeSend : function(){
+                                app.dialogWait('Estamos comprobando el acceso');
+                         },
+                         datos : { opc : 'login', user: email , pass : pass },
+                         success: function( rs){
+                                app.dialogClose();
+                                if (rs.error){
+                                    $('#email_token').focus();
+                                    app.alertConfirm('Acceso denegado', "Nom d'usuari incorrecte");
+                                }
+                             
+                                if (rs.LoginData){
+                                    LoginData = rs.LoginData;
+                                    bigData   = rs.bigData;
+                                    Cookies.set('loginoauth', LoginData, { expires: 365 });
+                                    $('#email_token , #pass_token').val('');
+                                    app.setAvatar(LoginData);
+                                    app.addEquip(bigData.team);
+                                    app.animatePage('home','in-right');
+                                }
+                                
+                                console.log(LoginData);
+                         },
+                         errorCallback : function(){
+                             app.dialogClose();
+                         }
+                      })
+        },
+    
+        oauth : function(){
+            
+                var oauth = Cookies.getJSON('loginoauth');
+            
+                if (oauth){
+                        LoginData = oauth;
+                        this.login(LoginData.user , LoginData.pass);
+                }
+            
+        },
+    
         hastControl : function(){
           
             if (window.history && window.history.pushState) {
-                $(window).on('popstate', function(e) {
+                $(window).on('hashchange', function(e) {
                     
                     
                     
                     var hash = app.getLastNav();
                     
-                    console.log(hash);
                     
-                    var hashLocation = location.hash;
-                    
-                    /*
-                    var beforeHash = this.pageBefore;  
-                    
-                    if (hashLocation) this.pageBefore = hashLocation;
-                     
-                   
-                    
-                     
-                    if (this.pageBefore == '#home' && !hashLocation ){
-                         app.animatePage('home','out-right')
-                     }else{
-                        
-                         if (hash != 'home'){
-                             app.animatePage(hash,'out-right');
-                         }
-                             
-                     }
-                     */
-                    
-                    if (app.lastEvent == 'in' && hash != hashLocation.replace('#','') && hashLocation ) app.animatePage(hash,'out-right');
+                    var hashLocation = location.hash.replace('#','');
+                
+                    if ( hash != hashLocation && hashLocation ) {
+                            if (hash =='home') { location.hash = "#home"; return false; } 
+                            app.animatePage(hash,'out-right');
+                    }
                     
                 });
           }
@@ -119,6 +122,13 @@ app = {
         setNavigator : function(value){
                 var indice = (!this.navApp.length) ? 0 : (this.navApp.length);
                 this.navApp[indice] = value;
+        },
+        unsetNavigator : function(value){
+                var indice = (!this.navApp.length) ? 0 : (this.navApp.length) - 1;
+                this.navApp.splice(indice, 1);    
+        },
+        backNavigator: function(){
+            window.history.back();
         },
         getLastNav : function(){
             var indice = (!this.navApp.length) ? 0 : (this.navApp.length - 1); 
@@ -129,8 +139,8 @@ app = {
                
                 
 
-            
-               this.wDivise = $(window).width() ;
+               this.hDivice = $(window).height() ;   
+               this.wDivice = $(window).width() ;
                this.baseULR = window.location.href;
             
                 var addCss = '<style type="text/css">'+
@@ -138,13 +148,22 @@ app = {
                                 'height :'+$(window).height()+'px'+
                              '}'+
                              '.content {'+
-                                'height :'+( $(window).height() - ($ ('header nav').height() + $('footer nav').height() )  )+'px'+
+                                'height :'+( $(window).height() - ($('header nav').height() + $('footer nav').height() )  )+'px'+
+                             '}'+
+                             '.content-header {'+
+                                'height :'+( $(window).height() - $('header nav').height() )+'px'+
+                             '}'+
+                             '.content-full {'+
+                                'height :'+( $(window).height() )+'px'+
+                             '}'+
+                             '[data-start="bottom"] {'+
+                                'top :'+( $(window).height()  )+'px'+
                              '}'+
                               '[data-start="right"] {'+
-                                'right :-'+( this.wDivise  )+'px'+
+                                'top:0px; right :-'+( this.wDivice  )+'px'+
                              '}'+
                             '[data-start="left"] {'+
-                                'left :-'+( this.wDivise  )+'px'+
+                                'left :-'+( this.wDivice  )+'px'+
                              '}'+
                              '</style>';
             
@@ -186,72 +205,97 @@ app = {
             
                 if(!page.length) {
                     page = $('section[data-sidebar="'+pageName+'"]');
-                    // pageName = 'sidebar';
                     velocity = 100;
                 }        
-                 
+                
+                
                 if(!page.length)  return false;
             
                 page.addClass('animated-page');
                 
+            if (page.attr("data-speed")) velocity = parseFloat(page.attr("data-speed"));
+                
                 if (!this.debug) StatusBar.backgroundColorByHexString("#E18560");
             
                 
-                var wDivise = this.wDivise;
+                var wDivice = this.wDivice;
                 
-                
+                $('*').removeClass('currentPageActive');
+                page.addClass('currentPageActive')
+                  
                 switch(ANIMATION){
                     
                     case 'out-right':
                         page.stop().animate({'top':0,
-                                      'left':(this.wDivise)+'px', 
+                                      'left':(this.wDivice)+'px', 
                                       'position':'absolute'},velocity,function(){
                                     
-                                page.css({'left':'', 'right':'-'+(wDivise)+'px' }); 
+                                    
+                                    page.attr('style', '').removeClass('animated-page');
+                           
                             
                         });
-            
+                        this.lastEvent = 'out';
+                        this.unsetNavigator(pageName);
                         
                     break;
                     case 'out-left':
                         page.stop().animate({'top':0,
-                                      'left':'-'+(this.wDivise)+'px', 
+                                      'left':'-'+(this.wDivice)+'px', 
                                       'position':'absolute'},velocity,function(){
-                                 page.css({'left':'-'+(wDivise)+'px' });      
+                                      
+                                      page.attr('style', '').removeClass('animated-page');
+                                      page.attr('style', '');              
+                                      page.css({'left':'-'+(wDivice)+'px' });      
                         });
-                         
-                       
+                        
+                        this.lastEvent = 'out';
+                        this.unsetNavigator(pageName);
                         
                     break; 
                     case 'in-right':
-                        page.stop().css({'right':'-'+(this.wDivise)+'px'});
-                        page.animate({'top':0,'right':'0px', 
+                        page.stop().css({'right':'-'+(this.wDivice)+'px'});
+                        page.animate({right:'0px', 
                                        'position':'absolute'},velocity);
                         
                         this.setNavigator(pageName);
                         this.lastEvent = 'in';
+                        window.location.href = "#"+pageName;
                     break;
                         
                     case 'in-left':
                         
-                        page.stop().css({'left':'-'+(this.wDivise)+'px'});
+                        page.stop().css({'left':'-'+(this.wDivice)+'px'});
                         page.animate({'top':0,'left':'0px', 
                                        'position':'absolute'},velocity); 
                          
                         this.setNavigator(pageName);
                         this.lastEvent = 'in';
+                        window.location.href = "#"+pageName;
+                    break;
+                        
+                    case 'bottom-top':
+                        
+                        page.stop().css({top: this.hDivice+'px'});
+                        page.animate({'top':0,'left':'0px', 
+                                       'position':'absolute'},velocity); 
+                         
+                        this.setNavigator(pageName);
+                        this.lastEvent = 'in';
+                        window.location.href = "#"+pageName;
                     break; 
+                        
                         
                     default:
                          
-                         page.stop().animate({'top':0,'left':'-'+(this.wDivise + 150)+'px', 
+                         page.stop().animate({'top':0,'left':'-'+(this.wDivice + 150)+'px', 
                                        'position':'absolute'},velocity);   
                     break;
                         
                 } 
                     
                      
-                        window.location.href = "#"+pageName;
+                
                    
             
         },
@@ -286,6 +330,9 @@ app = {
                          complete: opciones.complete,
                          error: function (jqXHR, exception) {
                             app.alertConfirm( errorMSGTITLE , errorMSG + ' <b>'+jqXHR.statusText+'</b>');
+                            if (opciones.errorCallback){ 
+                                 opciones.errorCallback()
+                            }
                          },
 						 cache: false
 				})
@@ -297,6 +344,18 @@ app = {
                 if (data.avatar) $('.avatar img').attr('src', data.avatar);
                 if (data.Name) $('.nice-name').html(data.Name);
                  
+        },
+    
+        addEquip : function(listEquip){
+                
+            var  ul = $('#equip-list');
+            
+            $.each( listEquip , function( key, M ) {
+                ul.append('<li>'+M.SNAME+
+                          '<a class="category-team">'+M.Roll+'</a>'+        
+                          '</li>')
+            });
+            
         }
         
     
