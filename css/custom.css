@@ -223,7 +223,7 @@ header nav .title {
     vertical-align: middle;
     color:#FFF;
     font-size: 20px;
-    padding-top: 10px;
+    padding-top: 12px;
     text-transform: uppercase;
 }
 
@@ -296,6 +296,18 @@ header nav .title img{
 }
 
 .bgbase{ background: #F3F2F3;}
+.bgColor{ background: #E18560;}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
 .avatar{
     text-align: center;
     display: block;
@@ -367,7 +379,6 @@ header nav .title img{
     position: absolute;
     bottom: 0px;
     background: #FFF;
-    min-height: 200px;
 }
 
 .bottom-area ul {  margin: 20px 0px; padding: 0px; }
@@ -435,4 +446,21 @@ a{
 
 #equip-list li{
     margin-bottom: 20px;
+}
+
+[data-page="detailsEquip"] .bottom-area ul{  margin:0px; }
+[data-page="detailsEquip"] .bottom-area ul li {  padding:10px; border-bottom: 1px solid #E4E2E4; }
+[data-page="detailsEquip"] .bottom-area ul li a { border-bottom: none;} 
+
+.title-small {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+[data-page="detailsEquip"] .bottom-area ul {
+    position: absolute;
+    bottom: 0px;
+    width: 100%; 
 }

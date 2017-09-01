@@ -48,6 +48,7 @@ app = {
         baseULR : '',
         lastEvent : '',
         navApp : [],
+        zIndex : 1000,
     
         main : function(){
             this.setSizeMobil();
@@ -59,7 +60,7 @@ app = {
             
             this.ajax({
                          beforeSend : function(){
-                                app.dialogWait('Estamos comprobando el acceso');
+                                app.dialogWait('Validant accés, per favor esperi');
                          },
                          datos : { opc : 'login', user: email , pass : pass },
                          success: function( rs){
@@ -192,7 +193,11 @@ app = {
             else
                 ID.close();   
         },
-    
+        
+        getzIndex   : function(){
+            this.zIndex += 10;
+            return this.zIndex
+        },
         animatePage : function (pageName , ANIMATION ){
                 
                 ANIMATION = (ANIMATION) ? ANIMATION : 'basic';
@@ -253,10 +258,25 @@ app = {
                         this.unsetNavigator(pageName);
                         
                     break; 
+                    
+                    case 'show':
+                        
+                        page.animate({'z-index': this.getzIndex(),
+                                      top:'0px', 
+                                      left : 0,
+                                      'position':'absolute'},velocity);
+                        
+                        this.setNavigator(pageName);
+                        this.lastEvent = 'in';
+                        window.location.href = "#"+pageName;
+                        
+                        
+                        
+                    break;
                     case 'in-right':
                         page.stop().css({'right':'-'+(this.wDivice)+'px'});
-                        page.animate({right:'0px', 
-                                       'position':'absolute'},velocity);
+                        page.animate({'z-index': this.getzIndex(),right:'0px', 
+                                      'position':'absolute'},velocity);
                         
                         this.setNavigator(pageName);
                         this.lastEvent = 'in';
@@ -266,7 +286,7 @@ app = {
                     case 'in-left':
                         
                         page.stop().css({'left':'-'+(this.wDivice)+'px'});
-                        page.animate({'top':0,'left':'0px', 
+                        page.animate({'z-index': this.getzIndex(),'top':0,'left':'0px', 
                                        'position':'absolute'},velocity); 
                          
                         this.setNavigator(pageName);
@@ -277,7 +297,7 @@ app = {
                     case 'bottom-top':
                         
                         page.stop().css({top: this.hDivice+'px'});
-                        page.animate({'top':0,'left':'0px', 
+                        page.animate({'z-index': this.getzIndex(),'top':0,'left':'0px', 
                                        'position':'absolute'},velocity); 
                          
                         this.setNavigator(pageName);
@@ -317,7 +337,7 @@ app = {
              
                 
               errorMSGTITLE =  (opciones.errorMSGTITLE) ?  opciones.errorMSG : 'Error';
-              errorMSG      =  (opciones.errorMSGTITLE) ?  opciones.errorMSG : 'Se ha producido un error en la carga de la información. El servidor respondio:';
+              errorMSG      =  (opciones.errorMSGTITLE) ?  opciones.errorMSG : 'S\'ha produït un error en la càrrega de la informació. El servidor respondio:';
             
               $.ajax({ 
 						 beforeSend :  opciones.beforeSend,
@@ -352,9 +372,31 @@ app = {
             
             $.each( listEquip , function( key, M ) {
                 ul.append('<li>'+M.SNAME+
-                          '<a class="category-team">'+M.Roll+'</a>'+        
+                          '<a class="category-team" onclick="app.loadPage(\'detailsEquip\',{ opc : \'loadPage\', page : \'detailsEquip\', id : '+M.ID+'})">'+M.Roll+'</a>'+        
                           '</li>')
             });
+            
+        },
+    
+    
+        loadPage  : function(page , data){
+                
+                var pageSelect =  $('[data-page="'+page+'"]');
+            
+                this.ajax({
+                            beforeSend : function(){
+                                    app.dialogWait('Per favor esperi');
+                            },
+                            datos : data,
+                            success : function(rs){
+                                if (rs.htmlContent){
+                                    $(pageSelect).find(rs.obj).html(rs.htmlContent);
+                                }
+                                app.dialogClose();   
+                                app.animatePage(page,'show');
+                            }
+                })
+            
             
         }
         
