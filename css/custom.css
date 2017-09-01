@@ -320,6 +320,11 @@ header nav .title img{
     width: 130px;
 }
 
+#detailsAvatar img{
+    width: 200px;
+    margin: 50px 0 10px 0;
+}
+
 /*** MENU **/
 .item-option{
     margin: 0px;
